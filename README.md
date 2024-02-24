@@ -38,3 +38,9 @@ npm create vite@latest
 ```
 npm i react-router-dom moment
 ```
+
+To run the app
+
+```
+npm run dev
+```

@@ -7,6 +7,7 @@ import thumbnail5 from '../../assets/thumbnail5.png';
 import thumbnail6 from '../../assets/thumbnail6.png';
 import thumbnail7 from '../../assets/thumbnail7.png';
 import thumbnail8 from '../../assets/thumbnail8.png';
+import { Link } from 'react-router-dom';
 
 function Recommended() {
   const imgList = [
@@ -21,14 +22,18 @@ function Recommended() {
   ];
 
   const renderImgs = imgList.map((item, index) => (
-    <div id={String(index)} className="side-video-list">
+    <Link
+      key={String(index)}
+      to={`${window.origin}/video/${index}`}
+      className="side-video-list"
+    >
       <img src={item} alt="" />
       <div className="video-info">
-        <h4>Another recommendation video for you</h4>
+        <h4>Another recommendation - {index} video for you</h4>
         <p>GreatStack</p>
         <p>199k Views</p>
       </div>
-    </div>
+    </Link>
   ));
   return <div className="recommended">{renderImgs}</div>;
 }

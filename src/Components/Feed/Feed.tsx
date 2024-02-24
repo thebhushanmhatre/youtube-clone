@@ -23,23 +23,13 @@ export default function Feed() {
 
   const renderImgs = [...imgList, ...imgList, ...imgList].map(
     (imgSrc, index) => {
-      if (index === 0) {
-        return (
-          <Link to={`video/20/4321`} className="card">
-            <img src={imgSrc} alt="" />
-            <h2>
-              Best channel to learn coding that help yout to be a web developer
-            </h2>
-          </Link>
-        );
-      }
       return (
-        <div id={String(index)} className="card">
+        <Link key={String(index)} to={`video/${index}`} className="card">
           <img src={imgSrc} alt="" />
           <h2>
             Best channel to learn coding that help yout to be a web developer
           </h2>
-        </div>
+        </Link>
       );
     }
   );

@@ -14,73 +14,57 @@ import tom from '../../assets/tom.png';
 import megan from '../../assets/megan.png';
 import cameron from '../../assets/cameron.png';
 
-export default function Sidebar({ sidebar }) {
+export default function Sidebar({ sidebar }: any) {
+  const categorySideLinks = {
+    Home: home,
+    Gaming: game_icon,
+    Automobiles: automobiles,
+    Sports: sports,
+    Entertainment: entertainment,
+    Tech: tech,
+    Music: music,
+    Blogs: blogs,
+    News: news,
+  };
+
+  const renderCategories = Object.entries(categorySideLinks).map(
+    ([title, srcLink], index) => {
+      return (
+        <div key={String(index)} className="side-link">
+          <img src={srcLink} alt="" />
+          <p>{title}</p>
+        </div>
+      );
+    }
+  );
+
+  const subscribersSideLinks = {
+    Megan: megan,
+    Jack: jack,
+    Simon: simon,
+    Tom: tom,
+    Cameron: cameron,
+  };
+
+  const renderSubscribers = Object.entries(subscribersSideLinks).map(
+    ([title, srcLink], index) => {
+      return (
+        <div key={String(index)} className="side-link">
+          <img src={srcLink} alt="" />
+          <p>{title}</p>
+        </div>
+      );
+    }
+  );
+
   return (
     <div className={`sidebar ${sidebar ? '' : 'small-sidebar'}`}>
       <div className="shortcut-links">
-        <div className="side-link">
-          <img src={home} alt="" />
-          <p>Home</p>
-        </div>
-        <div className="side-link">
-          <img src={game_icon} alt="" />
-          <p>Gameing</p>
-        </div>
-        <div className="side-link">
-          <img src={automobiles} alt="" />
-          <p>Automobiles</p>
-        </div>
-        <div className="side-link">
-          <img src={sports} alt="" />
-          <p>Sports</p>
-        </div>
-        <div className="side-link">
-          <img src={entertainment} alt="" />
-          <p>Entertainment</p>
-        </div>
-        <div className="side-link">
-          <img src={tech} alt="" />
-          <p>Tech</p>
-        </div>
-        <div className="side-link">
-          <img src={music} alt="" />
-          <p>Music</p>
-        </div>
-        <div className="side-link">
-          <img src={blogs} alt="" />
-          <p>Blogs</p>
-        </div>
-        <div className="side-link">
-          <img src={news} alt="" />
-          <p>News</p>
-        </div>
+        {renderCategories}
         <hr />
         <div className="subscribed-list">
           <h3>Subscribed</h3>
-
-          <div className="side-link">
-            <img src={megan} alt="" />
-            <p>Megan</p>
-          </div>
-          <div className="side-link">
-            <img src={jack} alt="" />
-            <p>Jack</p>
-          </div>
-
-          <div className="side-link">
-            <img src={simon} alt="" />
-            <p>Simon</p>
-          </div>
-
-          <div className="side-link">
-            <img src={tom} alt="" />
-            <p>Tom</p>
-          </div>
-
-          <div className="side-link">
-            <img src={cameron} alt="" />
-            <p>Cameron</p>
-          </div>
+          {renderSubscribers}
         </div>
       </div>
     </div>
